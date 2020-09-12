@@ -70,4 +70,17 @@ int multiplicar(int num1, int num2);
  */
 long long int calcularFactorial(int num1);
 
+/**
+ * @brief Toma los resultados de las operaciones y los muestra por consola
+ *
+ * @param suma
+ * @param resta
+ * @param divisionValida
+ * @param division
+ * @param producto
+ * @param factorialA
+ * @param factorialB
+ */
+void mostrarResultados(int suma, int resta, int divisionValida, float division, int producto, long long int factorialA, long long int factorialB);
+
 #endif /* CALCULADORA_H_ */

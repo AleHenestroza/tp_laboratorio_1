@@ -81,6 +81,31 @@ long long int calcularFactorial(int num1) {
 		}
 	}
 
+	if(num1 < 0) {
+		resultado = -1;
+	}
+
 	return resultado;
+}
+
+void mostrarResultados(int suma, int resta, int divisionValida, float division, int producto, long long int factorialA, long long int factorialB) {
+	printf("El resultado de A+B es: %d\n", suma);
+	printf("El resultado de A-B es: %d\n", resta);
+	if(divisionValida == 1) {
+		printf("El resultado de A/B es: %f\n", division);
+	} else {
+		printf("No es posible dividir por cero\n");
+	}
+	printf("El resultado de A*B es: %d\n", producto);
+	if(factorialA != -1) {
+		printf("El factorial de A es: %I64d\n", factorialA);
+	} else {
+		printf("No se puede calcular el factorial de A, ya que es un numero negativo\n");
+	}
+	if (factorialB != -1) {
+		printf("El factorial de B es: %I64d\n", factorialB);
+	} else {
+		printf("No se puede calcular el factorial de B, ya que es un numero negativo\n");
+	}
 }
 

@@ -46,30 +46,17 @@ int main(void) {
 
 			case 3:
 				if(num1Ingresado != 0 && num2Ingresado != 0) {
-
 					suma = sumar(num1, num2);
-
 					resta = restar(num1, num2);
-
 					if(num2 != 0) {
 						division = dividir(num1, num2);
 					} else {
 						divisionValida = 0;
 					}
-
 					producto = multiplicar(num1, num2);
+					factorialA = calcularFactorial(num1);
+					factorialB = calcularFactorial(num2);
 
-					if(num1 >= 0) {
-						factorialA = calcularFactorial(num1);
-					} else {
-						factorialA = -1;
-					}
-
-					if (num2 >= 0) {
-						factorialB = calcularFactorial(num2);
-					} else {
-						factorialB = -1;
-					}
 					operacionesRealizadas = 1;
 					printf("Operaciones realizadas con exito, en el proximo menu elija la opcion 4 para mostrar los resultados.\n");
 				} else {
@@ -80,25 +67,7 @@ int main(void) {
 			case 4:
 
 				if(operacionesRealizadas == 1) {
-					printf("El resultado de A+B es: %d\n", suma);
-					printf("El resultado de A-B es: %d\n", resta);
-					if(divisionValida == 1) {
-						printf("El resultado de A/B es: %f\n", division);
-					} else {
-						printf("No es posible dividir por cero\n");
-					}
-					printf("El resultado de A*B es: %d\n", producto);
-					if(factorialA != -1) {
-						printf("El factorial de A es: %I64d\n", factorialA);
-					} else {
-						printf("No se puede calcular el factorial de A, ya que es un numero negativo\n");
-					}
-					if (factorialB != -1) {
-						printf("El factorial de B es: %I64d\n", factorialB);
-					} else {
-						printf("No se puede calcular el factorial de B, ya que es un numero negativo\n");
-					}
-
+					mostrarResultados(suma, resta, divisionValida, division, producto, factorialA, factorialB);
 				} else {
 					printf("Debe realizar las operaciones antes de mostrar los resultados\n");
 				}
@@ -117,54 +86,5 @@ int main(void) {
 
 	} while(salida == 0);
 
-
 	return EXIT_SUCCESS;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

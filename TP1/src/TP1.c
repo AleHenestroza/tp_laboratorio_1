@@ -20,8 +20,8 @@ int main(void) {
 	int resta;
 	float division;
 	int producto;
-	long int factorialA;
-	long int factorialB;
+	long long int factorialA;
+	long long int factorialB;
 	int salida = 0;
 	int operacionesRealizadas = 0;
 	int num1Ingresado = 0;
@@ -30,17 +30,10 @@ int main(void) {
 
 	do {
 		system("cls");
-		if(num1Ingresado == 1) {
-			printf("El primer numero es: %d\n", num1);
-		}
-
-		if(num2Ingresado == 1) {
-			printf("El segundo numero es: %d\n", num2);
-		}
 
 		printf("\nElija la opcion\n\n");
 
-		switch(desplegarMenu()) {
+		switch(desplegarMenu(num1, num2, num1Ingresado, num2Ingresado)) {
 			case 1:
 				num1 = ingresarNumero();
 				num1Ingresado = 1;
@@ -96,12 +89,12 @@ int main(void) {
 					}
 					printf("El resultado de A*B es: %d\n", producto);
 					if(factorialA != -1) {
-						printf("El factorial de A es: %ld\n", factorialA);
+						printf("El factorial de A es: %I64d\n", factorialA);
 					} else {
 						printf("No se puede calcular el factorial de A, ya que es un numero negativo\n");
 					}
 					if (factorialB != -1) {
-						printf("El factorial de B es: %ld\n", factorialB);
+						printf("El factorial de B es: %I64d\n", factorialB);
 					} else {
 						printf("No se puede calcular el factorial de B, ya que es un numero negativo\n");
 					}

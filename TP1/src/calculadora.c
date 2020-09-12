@@ -6,11 +6,21 @@
  */
 #include <stdio.h>
 
-int desplegarMenu() {
+int desplegarMenu(int num1, int num2, int num1Ingresado, int num2Ingresado) {
 	int opcion;
 
-	printf("1. Ingresar 1er operando ( A = x ) \n");
-	printf("2. Ingresar 2do operando ( B = y ) \n");
+	if(num1Ingresado == 0) {
+		printf("1. Ingresar 1er operando ( A = x ) \n");
+	} else {
+		printf("1. Ingresar 1er operando ( A = %d ) \n", num1);
+	}
+
+	if(num2Ingresado == 0) {
+		printf("2. Ingresar 2do operando ( B = y ) \n");
+	} else {
+		printf("1. Ingresar 2do operando ( B = %d ) \n", num2);
+	}
+
 	printf("3. Calcular todas las operaciones \n");
 	printf("4. Informar resultados \n");
 	printf("5. Salir \n");
@@ -62,8 +72,8 @@ int multiplicar(int num1, int num2) {
 	return resultado;
 }
 
-long int calcularFactorial(int num1) {
-	long int resultado = 1;
+long long int calcularFactorial(int num1) {
+	long long int resultado = 1;
 
 	if(num1 > 0) {
 		for (int i = num1; i > 0; i--) {

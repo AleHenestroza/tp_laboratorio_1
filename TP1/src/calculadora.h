@@ -9,11 +9,15 @@
 #define CALCULADORA_H_
 
 /**
- * @brief Despliega el menu de opciones y lee la opcion ingresada por el usuario
+ * @brief Despliega el menu de opciones y lee la opcion ingresada por el usuario. Si ya hay numeros ingresados, los muestra en el menu
  *
+ * @param num1 Primer numero ingresado
+ * @param num2 Segundo numero ingresado
+ * @param num1Ingresado Bandera para comprobar si hay un numero ingresado
+ * @param num2Ingresado Bandera para comprobar si hay un numero ingresado
  * @return int correspondiente a la opcion ingresada por el usuario
  */
-int desplegarMenu();
+int desplegarMenu(int num1, int num2, int num1Ingresado, int num2Ingresado);
 
 /**
  * @brief Pide el ingreso de un numero y lo retorna.
@@ -64,6 +68,6 @@ int multiplicar(int num1, int num2);
  * @param num1 Numero ingresado
  * @return Factorial del numero ingresado
  */
-long int calcularFactorial(int num1);
+long long int calcularFactorial(int num1);
 
 #endif /* CALCULADORA_H_ */

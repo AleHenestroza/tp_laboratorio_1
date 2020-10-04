@@ -89,3 +89,45 @@ int printEmployees(Employee* list, int len);
  * @return			Returns -1 if Error and 0 if OK
  */
 int modifyEmployee(Employee* list, int len, int id);
+
+/**
+ * @brief 			Itera un array de Employees, sumando todos los salarios en los casos en
+ * 					que la bandera isEmpty == 0
+ *
+ * @param list		Puntero Employee* al array de empleados
+ * @param len		Longitud del array
+ * @return			Retorna -1 si hubo un error, el total de los salarios si OK
+ */
+float getTotalSalary(Employee* list, int len);
+
+/**
+ * @brief 			Itera un array y cuenta la cantidad de Employees cuya bandera isEmpty == 0
+ * 					En base al salario total y el numero de empleados, calcula el promedio
+ *
+ * @param list		Puntero Employee* al array de empleados
+ * @param len		Longitud del array
+ * @return			Retorna -1 si hubo un error, el promedio si OK
+ */
+float getAverageSalary(Employee* list, int len, float totalSalary);
+
+/**
+ * @brief 			Itera un array de empleados, contando la cantidad de empleados que superan
+ * 					el sueldo promedio
+ *
+ * @param list		Puntero al array de empleados
+ * @param len		Longitud del array
+ * @param avgSalary	Sueldo promedio
+ * @return			Retorna -1 si Error, la cuenta si OK
+ */
+int getAboveAverageSalaryEmployeesCount(Employee* list, int len, float avgSalary);
+
+/**
+ * @brief 			Recibe un array de empleados y su longitud e informa (imprime por pantalla)
+ * 					el total de sueldos, el sueldo promedio y la cantidad de empleados por encima
+ * 					del sueldo promedio.
+ *
+ * @param list		Puntero al array de empleados
+ * @param len		Longitud del array
+ * @return			Retorna -1 si hubo error, 0 si OK
+ */
+int informSalary(Employee* list, int len);

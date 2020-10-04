@@ -41,16 +41,16 @@ int addEmployee(Employee* list, int len, int id, char name[], char lastName[], f
 	return error;
 }
 int findEmployeeById(Employee* list, int len, int id) {
-	int posicion = -1;
+	int index = -1;
 	if(list != NULL && len > 0) {
 		for(int i = 0; i < len; i++) {
 			if(list[i].id == id) {
-				posicion = i;
+				index = i;
 				break;
 			}
 		}
 	}
-	return posicion;
+	return index;
 }
 int removeEmployee(Employee* list, int len, int id) {
 	int error = -1;
@@ -71,26 +71,17 @@ int sortEmployees(Employee* list, int len, int order) {
 		error = 0;
 		for(int i = 0; i < len - 1; i++) {
 			for(int j = i+1; j < len; j++) {
-				if( (strcmp(list[i].lastName, list[j].lastName) < 0 && order) || (strcmp(list[i].lastName, list[j].lastName) > 0 && !order) ) {
+				// Orden alfabetico
+				if( ( strcmp(list[i].lastName, list[j].lastName) < 0 && order ) || ( strcmp(list[i].lastName, list[j].lastName) > 0 && !order ) ) {
 					tmp = list[i];
 					list[i] = list[j];
 					list[j] = tmp;
-				} else if( (strcmp(list[i].lastName, list[j].lastName) == 0 ) && ((list[i].sector < list[j].sector && order) || (list[i].sector > list[j].sector && !order)) ) {
+				} else if( ( strcmp(list[i].lastName, list[j].lastName) == 0 ) && ( ( list[i].sector < list[j].sector && order ) || ( list[i].sector > list[j].sector && !order ) ) ) {
+					// Orden por sector en caso de misma letra
 					tmp = list[i];
 					list[i] = list[j];
 					list[j] = tmp;
 				}
-
-
-//				if((list[i].sector > list[j].sector && order)) {
-//					tmp = list[i];
-//					list[i] = list[j];
-//					list[j] = tmp;
-//				} else if((list[i].sector < list[j].sector && !order)) {
-//					tmp = list[i];
-//					list[i] = list[j];
-//					list[j] = tmp;
-//				}
 			}
 		}
 	}
@@ -122,6 +113,11 @@ int modifyEmployee(Employee* list, int len, int id) {
 	int index;
 	int e; // Posible error en los inputs
 	int opc; // Opcion del switch
+	/* Creo variables temporales para no modificar los campos del Empleado directamente.
+	 * Si bien la funcion valida los datos ingresados, lo hace luego de solicitarlos por
+	 * lo que podria llegar a asignar un valor invalido.
+	 * Asignandolos a variables temporales, puedo revisar si el retorno de las funciones
+	 * fue un error o no y, en base a eso, asignar el nuevo valor */
 	char name[51];
 	char lastName[51];
 	float salary;
@@ -178,3 +174,72 @@ int modifyEmployee(Employee* list, int len, int id) {
 	}
 	return error;
 }
+float getTotalSalary(Employee* list, int len) {
+	float total = -1;
+	if(list != NULL && len > 0) {
+		for(int i = 0; i < len; i++) {
+			if(!list[i].isEmpty) {
+				total += list[i].salary;
+			}
+		}
+	}
+	// Para compensar por el hecho de inicializar el total en -1 (de lo contrario el total no seria exacto)
+	if(total > -1) {
+		total++;
+	}
+	return total;
+}
+float getAverageSalary(Employee* list, int len, float totalSalary) {
+	float promedio = -1;
+	int count = 0;
+	if(list != NULL && len > 0) {
+		for(int i = 0; i < len; i++) {
+			if(!list[i].isEmpty) {
+				count++;
+			}
+		}
+		if(count > 0) {
+			promedio = totalSalary / count;
+		}
+	}
+	return promedio;
+}
+int getAboveAverageSalaryEmployeesCount(Employee* list, int len, float avgSalary) {
+	int count = 0;
+	if(list != NULL && len > 0 && avgSalary > -1) {
+		for(int i = 0; i < len; i++) {
+			if(!list[i].isEmpty && list[i].salary >= avgSalary) {
+				count++;
+			}
+		}
+	}
+	return count;
+}
+int informSalary(Employee* list, int len) {
+	int error = -1;
+	float totalSalary;
+	float avgSalary;
+	int count;
+	if(list != NULL && len > 0) {
+		totalSalary = getTotalSalary(list, len);
+		if(totalSalary > -1) {
+			avgSalary = getAverageSalary(list, len, totalSalary);
+			count = getAboveAverageSalaryEmployeesCount(list, len, avgSalary);
+		} else {
+			printf("\nError al calcular el total de sueldos.\n\n");
+		}
+
+		if(count > 0) {
+			printf("\n\nEl sueldo total es de: %.2f\n", totalSalary);
+			printf("El sueldo promedio es de: %.2f\n", avgSalary);
+			if(count == 1) {
+				printf("Hay %d solo empleado en la lista.\n\n", count);
+			} else {
+				printf("Hay %d empleados que cobran por encima del sueldo promedio.\n\n", count);
+			}
+			error = 0;
+		}
+	}
+	return error;
+}
+

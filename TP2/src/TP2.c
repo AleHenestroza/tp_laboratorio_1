@@ -58,66 +58,84 @@ int main(void) {
 					}
 					break;
 				case 2:
-					printEmployees(lista, LEN);
-					printf("\nIngrese el ID del empleado a modificar: ");
-					scanf("%d", &inputId);
-					e = modifyEmployee(lista, LEN, inputId);
+					e = printEmployees(lista, LEN);
 					if(!e) {
-						printf("\nEmpleado modificado con exito.\n\n");
+						printf("\nIngrese el ID del empleado a modificar: ");
+						scanf("%d", &inputId);
+						e = modifyEmployee(lista, LEN, inputId);
+						if(!e) {
+							printf("\nEmpleado modificado con exito.\n\n");
+						} else {
+							printf("\nHubo un error en la modificacion.\n\n");
+						}
 					} else {
-						printf("\nHubo un error en la modificacion.\n\n");
+						printf("\nNo hay empleados para modificar.\n\n");
 					}
 					break;
 				case 3:
-					printEmployees(lista, LEN);
-					printf("\n\nIngrese el ID del empleado a eliminar: ");
-					scanf("%d", &inputId);
-					// Si bien la funcion removeEmployee efectua un findEmployeeById, de esta forma se puede solicitar confirmacion al usuario antes de eliminar
-					e = findEmployeeById(lista, LEN, inputId);
+					e = printEmployees(lista, LEN);
 					if(!e) {
-						printf("\n\nConfirma que desea eliminar?\n"
-								"1: SI | 2: NO\n\n"
-								"Confirma: ");
-						scanf("%d", &input);
-						if(input) {
-							e = removeEmployee(lista, LEN, inputId);
-							if(!e) {
-								printf("\nEmpleado eliminado.\n\n");
+						printf("\n\nIngrese el ID del empleado a eliminar: ");
+						scanf("%d", &inputId);
+						// Si bien la funcion removeEmployee efectua un findEmployeeById, de esta forma se puede solicitar confirmacion al usuario antes de eliminar
+						e = findEmployeeById(lista, LEN, inputId);
+						if(!e) {
+							printf("\n\nConfirma que desea eliminar?\n"
+									"1: SI | 2: NO\n\n"
+									"Confirma: ");
+							scanf("%d", &input);
+							if(input) {
+								e = removeEmployee(lista, LEN, inputId);
+								if(!e) {
+									printf("\nEmpleado eliminado.\n\n");
+								} else {
+									printf("\nHubo un error al eliminar.\n\n");
+								}
+							} else if(input == 2){
+								printf("\nOperacion cancelada por el usuario.\n\n");
 							} else {
-								printf("\nHubo un error al eliminar.\n\n");
+								printf("\nIngrese una opcion valida. Operacion cancelada.\n\n");
 							}
-						} else if(input == 2){
-							printf("\nOperacion cancelada por el usuario.\n\n");
 						} else {
-							printf("\nIngrese una opcion valida. Operacion cancelada.\n\n");
+							printf("\nNo se encontro un empleado con ese ID.\n\n");
 						}
 					} else {
-						printf("\nNo se encontro un empleado con ese ID.\n\n");
+						printf("\nNo hay empleados para eliminar.\n\n");
 					}
 					break;
 				case 4:
 					e = printEmployees(lista, LEN);
-					if(e == -1) {
+					if(!e) {
+						e = informSalary(lista, LEN);
+						if(e == -1) {
+							printf("\nError al informar datos de sueldos.\n\n");
+						}
+					} else {
 						printf("\nNo hay empleados para mostrar.\n\n");
 					}
 					break;
 				case 5:
-					printf("\nComo desea ordenar la lista?\n"
-							"0: ASCENDENTE | 1: DESCENDENTE\n\n"
-							"Orden: ");
-					scanf("%d", &input);
-					if(input) {
-						e = sortEmployees(lista, LEN, DESC);
-					} else if(!input) {
-						e = sortEmployees(lista, LEN, ASC);
-					} else {
-						printf("\nIngrese una opcion valida.\n\n");
-						e = -1;
-					}
+					e = printEmployees(lista, LEN);
 					if(!e) {
-						printf("\nLista ordenada exitosamente.\n\n");
+						printf("\nComo desea ordenar la lista?\n"
+								"0: ASCENDENTE | 1: DESCENDENTE\n\n"
+								"Orden: ");
+						scanf("%d", &input);
+						if(input) {
+							e = sortEmployees(lista, LEN, DESC);
+						} else if(!input) {
+							e = sortEmployees(lista, LEN, ASC);
+						} else {
+							printf("\nIngrese una opcion valida.\n\n");
+							e = -1;
+						}
+						if(!e) {
+							printf("\nLista ordenada exitosamente.\n\n");
+						} else {
+							printf("\nError al ordenar la lista.\n\n");
+						}
 					} else {
-						printf("\nError al ordenar la lista.\n\n");
+						printf("\nLa lista esta vacia y no se puede ordenar.\n\n");
 					}
 					break;
 				case 6:

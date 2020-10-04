@@ -45,6 +45,11 @@ int validateString(char* string) {
 	int flagInvalid = 0;
 	int len = strlen(string);
 	for(int i = 0; i < len; i++) {
+		/* Valores ASCII:
+		 * 65 = A
+		 * 90 = Z
+		 * 97 = a
+		 * 122 = z */
 		if(!((string[i] >= 65 && string[i] <= 90) || (string[i] >= 97 && string[i] <= 122))) {
 			flagInvalid = 1;
 			break;

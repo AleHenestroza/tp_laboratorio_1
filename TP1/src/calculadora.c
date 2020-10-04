@@ -35,6 +35,7 @@ int ingresarNumero() {
 	int numero;
 
 	printf("Ingrese el numero: ");
+	fflush(stdin);
 	scanf("%d", &numero);
 
 	return numero;

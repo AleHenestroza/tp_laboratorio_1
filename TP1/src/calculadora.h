@@ -8,6 +8,8 @@
 #ifndef CALCULADORA_H_
 #define CALCULADORA_H_
 
+#endif /* CALCULADORA_H_ */
+
 /**
  * @brief Despliega el menu de opciones y lee la opcion ingresada por el usuario. Si ya hay numeros ingresados, los muestra en el menu
  *
@@ -82,5 +84,3 @@ long long int calcularFactorial(int num1);
  * @param factorialB
  */
 void mostrarResultados(int suma, int resta, int divisionValida, float division, int producto, long long int factorialA, long long int factorialB);
-
-#endif /* CALCULADORA_H_ */

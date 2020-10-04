@@ -9,6 +9,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <ctype.h>
 #include "calculadora.h"
 
 int main(void) {

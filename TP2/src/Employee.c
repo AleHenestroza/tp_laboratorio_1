@@ -232,11 +232,7 @@ int informSalary(Employee* list, int len) {
 		if(count > 0) {
 			printf("\n\nEl sueldo total es de: %.2f\n", totalSalary);
 			printf("El sueldo promedio es de: %.2f\n", avgSalary);
-			if(count == 1) {
-				printf("Hay %d solo empleado en la lista.\n\n", count);
-			} else {
-				printf("Hay %d empleados que cobran por encima del sueldo promedio.\n\n", count);
-			}
+			printf("Hay %d empleados que cobran por encima del sueldo promedio.\n\n", count);
 			error = 0;
 		}
 	}

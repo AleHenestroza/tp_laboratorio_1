@@ -87,3 +87,17 @@ int setSector(int * sector);
  * @return			Returns -1 if any of the functions failed to execute (invalid input by the user), and 0 if OK
  */
 int setData(char* name, char* lastName, float * salary, int * sector);
+
+/**
+ * @brief 			Switch para el menu principal, era demasiado largo para dejarlo en la funcion main, por lo que fue
+ * 					refactorizado para que sea su propia funcion. Recibe los punteros al Id, a la bandera de salida del
+ * 					programa y a la variable de error. Puede modificar el valor del id y de la bandera de salida. El puntero
+ * 					al error es para no crear mas variables innecesariamente
+ *
+ * @param lista		Puntero al array de empleados
+ * @param len		Longitud del array
+ * @param id		Puntero al Id asignado por el sistema (para autoincrementarlo)
+ * @param salida	Puntero a la bandera de salida (para modificarla en caso de querer cerrar el programa)
+ * @param e			Puntero a la variable de error (para no crear una nueva variable innecesaria)
+ */
+void menuSwitch(Employee* lista, int len, int * id, int * salida, int * e);

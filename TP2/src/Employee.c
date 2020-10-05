@@ -122,51 +122,80 @@ int modifyEmployee(Employee* list, int len, int id) {
 	char lastName[51];
 	float salary;
 	int sector;
+	int salida = 0;
 
 	if(list != NULL && len > 0) {
 		index = findEmployeeById(list, len, id);
 		if(index != -1) {
-			printEmployee(list[index]);
+			while(!salida) {
+				printEmployee(list[index]);
 
-			printf("\nQue dato desea modificar?\n");
-			printf("1: NOMBRE\n"
-					"2: APELLIDO\n"
-					"3: SUELDO\n"
-					"4: SECTOR\n");
-			printf("\nIngrese el numero de la opcion deseada: ");
-			scanf("%d", &opc);
-			switch(opc) {
-				case 1:
-					e = setName(name);
-					if(!e) {
-						strcpy(list[index].name, name);
-						error = 0;
-					}
-					break;
-				case 2:
-					e = setLastName(lastName);
-					if(!e) {
-						strcpy(list[index].lastName, lastName);
-						error = 0;
-					}
-					break;
-				case 3:
-					e = setSalary(&salary);
-					if(!e) {
-						list[index].salary = salary;
-						error = 0;
-					}
-					break;
-				case 4:
-					e = setSector(&sector);
-					if(!e) {
-						list[index].sector = sector;
-						error = 0;
-					}
-					break;
-				default:
-					printf("\nIngrese una opcion valida.\n");
-					break;
+				printf("\nQue dato desea modificar?\n");
+				printf("1: NOMBRE\n"
+						"2: APELLIDO\n"
+						"3: SUELDO\n"
+						"4: SECTOR\n"
+						"5: SALIR\n");
+				printf("\nIngrese el numero de la opcion deseada: ");
+				scanf("%d", &opc);
+				switch(opc) {
+					case 1:
+						printf("\nIngrese el nombre: ");
+						fflush(stdin);
+						gets(name);
+						e = validateString(name);
+						if(!e) {
+							strcpy(list[index].name, name);
+							error = 0;
+						} else {
+							printf("\nNombre invalido.\n\n");
+						}
+						break;
+					case 2:
+						printf("\nIngrese el apellido: ");
+						fflush(stdin);
+						gets(lastName);
+						e = validateString(lastName);
+						if(!e) {
+							strcpy(list[index].lastName, lastName);
+							error = 0;
+						} else {
+							printf("\nApellido invalido.\n\n");
+						}
+						break;
+					case 3:
+						printf("\nIngrese el sueldo: ");
+						scanf("%f", &salary);
+						e = validateSalary(salary);
+						if(!e) {
+							list[index].salary = salary;
+							error = 0;
+						} else {
+							printf("\nSueldo invalido.\n\n");
+						}
+						break;
+					case 4:
+						printf("\n1: GERENCIA"
+								"\n2: ADMINISTRACION"
+								"\n3: PROYECTOS"
+								"\n4: SOPORTE"
+								"\nIngrese el sector: ");
+						scanf("%d", &sector);
+						e = validateSector(sector);
+						if(!e) {
+							list[index].sector = sector;
+							error = 0;
+						} else {
+							printf("\nSector invalido.\n\n");
+						}
+						break;
+					case 5:
+						salida = 1;
+						break;
+					default:
+						printf("\nIngrese una opcion valida.\n");
+						break;
+				}
 			}
 		} else {
 			printf("No se encontro un empleado con ese ID.\n\n");

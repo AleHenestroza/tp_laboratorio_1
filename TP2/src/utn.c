@@ -6,6 +6,7 @@
  */
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include "Employee.h"
 #define ASC 0
@@ -13,6 +14,7 @@
 
 int showMenu() {
 	int opc = -1;
+	int input;
 
 	printf("\n                          *** ABM Empleados *** \n\n");
 	printf("\n                        Elija la opcion que desee.\n\n");
@@ -25,7 +27,11 @@ int showMenu() {
 			"6: SALIR\n");
 
 	printf("\nIngrese el numero de la opcion deseada: ");
-	scanf("%d", &opc);
+	fflush(stdin);
+	scanf("%d", &input);
+	if(input > 0 && input < 7) {
+		opc = input;
+	}
 	return opc;
 }
 int validateSalary(float salary) {
@@ -115,29 +121,25 @@ int setSector(int * sector) {
 }
 int setData(char* name, char* lastName, float * salary, int * sector) {
 	int error = -1;
-	int e = 0;
 
 	for(int i = 0; i < 4; i++) {
 		switch(i) {
 			case 0:
-				e = setName(name);
+				error = setName(name);
 				break;
 			case 1:
-				e = setLastName(lastName);
+				error = setLastName(lastName);
 				break;
 			case 2:
-				e = setSalary(salary);
+				error = setSalary(salary);
 				break;
 			case 3:
-				e = setSector(sector);
+				error = setSector(sector);
 				break;
 		}
-		if(e == -1) {
+		if(error == -1) {
 			break;
 		}
-	}
-	if(!e) {
-		error = 0;
 	}
 
 	return error;

@@ -24,7 +24,7 @@ int main(void) {
 	Employee lista[LEN];
 	int id = 10001;
 	int salida = 0;
-	int e = -1;
+	int e;
 
 	printf("Bienvenid@\n\n");
 	printf("Antes de comenzar a utilizar el Sistema de ABM, es necesario inicializar la lista de empleados.\n\n");
@@ -35,6 +35,7 @@ int main(void) {
 		printf("\nLista inicializada con exito.\n\n");
 		system("pause");
 		do {
+			e = -1;
 			system("cls");
 			menuSwitch(lista, LEN, &id, &salida, &e);
 			system("pause");

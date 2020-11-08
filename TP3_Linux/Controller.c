@@ -34,13 +34,13 @@ int controller_loadFromText(char* path , LinkedList* pArrayListEmployee)
 int controller_loadFromBinary(char* path , LinkedList* pArrayListEmployee)
 {
     int error = 1;
-	if(path != NULL && pArrayListEmployee != NULL) {
+	/*if(path != NULL && pArrayListEmployee != NULL) {
 		FILE* f = fopen(path, "rb");
-		if(!parser_EmployeeFromText(f, pArrayListEmployee)) {
+		if(!parser_EmployeeFromBinary(f, pArrayListEmployee)) {
 			error = 0;
 		}
 		fclose(f);
-	}
+	}*/
     return error;
 }
 

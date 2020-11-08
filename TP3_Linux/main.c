@@ -24,7 +24,7 @@ int main()
 {
     int option = 0;
     int flagData = 0;
-    int idMax;
+    int cargaDatos;
     char c; // Esta variable me sirve para usar getchar() para "pausar" la aplicación tras cada loop del do/while [en Linux parece que no se puede usar system("pause")]
     char salida = 'n';
     LinkedList* listaEmpleados = ll_newLinkedList();
@@ -49,14 +49,34 @@ int main()
     	}
         switch(option) {
             case 1:
-                idMax = controller_loadFromText("data.csv",listaEmpleados);
-                if(idMax == -1) {
-                    printf("Error en la carga de datos.\n");
+                if(!flagData) {
+                    cargaDatos = controller_loadFromText("data.csv",listaEmpleados);
+                    if(cargaDatos == -1) {
+                        printf("Error en la carga de datos.\n");
+                    } else {
+                        printf("Carga de datos exitosa.\n");
+                        flagData = 1;
+                    }
                 } else {
-                    printf("Carga de datos exitosa.\n");
-                    printf("\nID MAX: %d\n", idMax);
-                    flagData = 1;
+                    printf("\n\nYa hay datos guardados en el sistema, si vuelve a cargar, se eliminaran los datos previos.\n"
+                           "Si no guardo los datos en un archivo, es posible que se pierda informacion.\n"
+                           "Desea continuar? ");
+                    __fpurge(stdin);
+                    scanf("%c", &c);
+                    if(c == 's') {
+                        ll_clear(listaEmpleados);
+                        cargaDatos = controller_loadFromText("data.csv",listaEmpleados);
+                        if(cargaDatos == -1) {
+                            printf("Error en la carga de datos.\n");
+                        } else {
+                            printf("Carga de datos exitosa.\n");
+                            flagData = 1;
+                        }
+                    } else {
+                        printf("\nOperacion cancelada por el usuario.\n");
+                    }
                 }
+
                 break;
             case 2:
                 printf("Proximamente disponible! :)");
@@ -122,6 +142,11 @@ int main()
             	break;
             case 9:
                 printf("Proximamente disponible! :)");
+                /*FILE* fb = fopen("data.bin", "wb");
+                for(int i = 0; i < ll_len(listaEmpleados); i++) {
+                    fwrite(&listaEmpleados[i], sizeof(listaEmpleados[0]), ll_len(listaEmpleados), fb);
+                }
+                fclose(fb);*/
             	break;
             case 10:
             	system("clear");

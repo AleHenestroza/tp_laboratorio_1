@@ -1,0 +1,41 @@
+# depslib dependency file v1.0
+1604868519 source:/home/alehenestroza/C Workspace/TP3_Linux/Controller.c
+	<stdio.h>
+	<stdio_ext.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"Employee.h"
+	"parser.h"
+
+1604802994 /home/alehenestroza/C Workspace/TP3_Linux/LinkedList.h
+
+1604865823 /home/alehenestroza/C Workspace/TP3_Linux/Employee.h
+
+1604751242 /home/alehenestroza/C Workspace/TP3_Linux/parser.h
+
+1604867949 source:/home/alehenestroza/C Workspace/TP3_Linux/Employee.c
+	"Employee.h"
+	"LinkedList.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1604868492 source:/home/alehenestroza/C Workspace/TP3_Linux/main.c
+	<stdio.h>
+	<stdlib.h>
+	<stdio_ext.h>
+	"LinkedList.h"
+	"parser.h"
+	"Controller.h"
+	"Employee.h"
+
+1604751244 /home/alehenestroza/C Workspace/TP3_Linux/Controller.h
+
+1604868615 source:/home/alehenestroza/C Workspace/TP3_Linux/parser.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"Employee.h"
+

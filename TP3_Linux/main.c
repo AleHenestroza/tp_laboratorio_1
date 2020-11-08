@@ -59,7 +59,7 @@ int main()
                 }
                 break;
             case 2:
-                printf("Proximamente disponible! :\)");
+                printf("Proximamente disponible! :)");
             	break;
             case 3:
             	if(!flagData || controller_addEmployee(listaEmpleados)) {
@@ -121,7 +121,7 @@ int main()
                 controller_saveAsText("data2.csv", listaEmpleados);
             	break;
             case 9:
-                printf("Proximamente disponible! :\)");
+                printf("Proximamente disponible! :)");
             	break;
             case 10:
             	system("clear");

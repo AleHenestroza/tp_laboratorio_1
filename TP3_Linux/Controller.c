@@ -211,6 +211,7 @@ int controller_sortEmployee(LinkedList* pArrayListEmployee)
     if(pArrayListEmployee != NULL) {
         error = 0;
         system("clear");
+        printf("\nProximamente disponible! :) \n\n");
         printf("Como quiere ordenar la lista?\n"
                "1: Por ID\n"
                "2: Por nombre\n"

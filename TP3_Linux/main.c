@@ -138,15 +138,18 @@ int main()
                 }
             	break;
             case 8:
-                controller_saveAsText("data2.csv", listaEmpleados);
+                if(!flagData) {
+                    printf("No se inicializo la lista de empleados, cargue los datos del archivo.\n");
+                } else {
+                    if(!controller_saveAsText("data.csv", listaEmpleados)) {
+                        printf("Datos guardados con exito a archivo data.csv\n");
+                    } else {
+                        printf("Error al guardar los datos.\n");
+                    }
+                }
             	break;
             case 9:
                 printf("Proximamente disponible! :)");
-                /*FILE* fb = fopen("data.bin", "wb");
-                for(int i = 0; i < ll_len(listaEmpleados); i++) {
-                    fwrite(&listaEmpleados[i], sizeof(listaEmpleados[0]), ll_len(listaEmpleados), fb);
-                }
-                fclose(fb);*/
             	break;
             case 10:
             	system("clear");

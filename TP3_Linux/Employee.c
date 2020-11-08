@@ -105,7 +105,7 @@ int mostrarEmpleados(void* listaEmployees, int tam) {
     Employee* emp;
     if(listaEmployees != NULL && tam > 0) {
         for(int i = 0; i < tam; i++) {
-            emp = ll_get(listaEmployees, i);
+            emp = (Employee*) ll_get(listaEmployees, i);
             if(emp != NULL) {
                 mostrarEmpleado(emp);
             }
@@ -115,57 +115,45 @@ int mostrarEmpleados(void* listaEmployees, int tam) {
 }
 int employee_sortId(void* empA, void* empB) {
     int retorno = 0;
-    int id[2];
-    if(empA != NULL && empB != NULL) {
-        if(employee_getId((Employee*) empA, &id[0])
-        && employee_getId((Employee*) empB, &id[1])) {
-            if(id[0] > id[1]) {
-                retorno = 1;
-            } else {
-                retorno = -1;
-            }
-        }
+    Employee* empleadoA = (Employee*) empA;
+    Employee* empleadoB = (Employee*) empB;
+    if(empleadoA->id > empleadoB->id) {
+        retorno = 1;
+    } else if(empleadoA->id < empleadoB->id) {
+        retorno = -1;
     }
     return retorno;
 }
 int employee_sortNombre(void* empA, void* empB) {
     int retorno = 0;
-    char buffer[2][128];
-    if(empA != NULL && empB != NULL) {
-        if(employee_getNombre((Employee*) empA, buffer[0])
-        && employee_getNombre((Employee*) empB, buffer[1])) {
-            retorno = strcmp(buffer[0], buffer[1]);
-        }
+    Employee* empleadoA = (Employee*) empA;
+    Employee* empleadoB = (Employee*) empB;
+    if(strcmp(empleadoA->nombre, empleadoB->nombre) > 0) {
+        retorno = 1;
+    } else if(strcmp(empleadoA->nombre, empleadoB->nombre) < 0) {
+        retorno = -1;
     }
     return retorno;
 }
 int employee_sortHorasTrabajadas(void* empA, void* empB) {
     int retorno = 0;
-    int horas[2];
-    if(empA != NULL && empB != NULL) {
-        if(employee_getHorasTrabajadas((Employee*) empA, &horas[0])
-        && employee_getHorasTrabajadas((Employee*) empB, &horas[1])) {
-            if(horas[0] > horas[1]) {
-                retorno = 1;
-            } else {
-                retorno = -1;
-            }
-        }
+    Employee* empleadoA = (Employee*) empA;
+    Employee* empleadoB = (Employee*) empB;
+    if(empleadoA->horasTrabajadas > empleadoB->horasTrabajadas) {
+        retorno = 1;
+    } else if(empleadoA->horasTrabajadas < empleadoB->horasTrabajadas) {
+        retorno = -1;
     }
     return retorno;
 }
 int employee_sortSueldo(void* empA, void* empB) {
     int retorno = 0;
-    int sueldo[2];
-    if(empA != NULL && empB != NULL) {
-        if(employee_getSueldo((Employee*) empA, &sueldo[0])
-        && employee_getSueldo((Employee*) empB, &sueldo[1])) {
-            if(sueldo[0] > sueldo[1]) {
-                retorno = 1;
-            } else {
-                retorno = -1;
-            }
-        }
+    Employee* empleadoA = (Employee*) empA;
+    Employee* empleadoB = (Employee*) empB;
+    if(empleadoA->sueldo > empleadoB->sueldo) {
+        retorno = 1;
+    } else if(empleadoA->sueldo < empleadoB->sueldo) {
+        retorno = -1;
     }
     return retorno;
 }

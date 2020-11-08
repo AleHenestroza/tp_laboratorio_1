@@ -45,7 +45,6 @@
 		<Unit filename="TP3_Linux.layout" />
 		<Unit filename="data.bin" />
 		<Unit filename="data.csv" />
-		<Unit filename="data.csv.bak" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>

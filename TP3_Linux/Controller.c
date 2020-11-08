@@ -33,15 +33,9 @@ int controller_loadFromText(char* path , LinkedList* pArrayListEmployee)
  */
 int controller_loadFromBinary(char* path , LinkedList* pArrayListEmployee)
 {
-    int error = 1;
-	/*if(path != NULL && pArrayListEmployee != NULL) {
-		FILE* f = fopen(path, "rb");
-		if(!parser_EmployeeFromBinary(f, pArrayListEmployee)) {
-			error = 0;
-		}
-		fclose(f);
-	}*/
-    return error;
+    int retorno = -1;
+
+    return retorno;
 }
 
 /** \brief Alta de empleados
@@ -226,15 +220,19 @@ int controller_sortEmployee(LinkedList* pArrayListEmployee)
         scanf("%d", &orden);
         switch(opcion) {
             case 1:
+                printf("\nPor favor, espere mientras se ordena el listado.\n");
                 ll_sort(pArrayListEmployee, employee_sortId, orden);
                 break;
             case 2:
+                printf("\nPor favor, espere mientras se ordena el listado.\n");
                 ll_sort(pArrayListEmployee, employee_sortNombre, orden);
                 break;
             case 3:
+                printf("\nPor favor, espere mientras se ordena el listado.\n");
                 ll_sort(pArrayListEmployee, employee_sortHorasTrabajadas, orden);
                 break;
             case 4:
+                printf("\nPor favor, espere mientras se ordena el listado.\n");
                 ll_sort(pArrayListEmployee, employee_sortSueldo, orden);
                 break;
             default:
@@ -265,6 +263,7 @@ int controller_saveAsText(char* path , LinkedList* pArrayListEmployee)
                 fprintf(f,"%d,%s,%d,%d\n", emp->id, emp->nombre, emp->horasTrabajadas, emp->sueldo);
             }
         }
+        error = 0;
         free(emp);
         fclose(f);
     }

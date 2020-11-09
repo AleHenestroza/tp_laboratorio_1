@@ -76,10 +76,35 @@ int main()
                         printf("\nOperacion cancelada por el usuario.\n");
                     }
                 }
-
                 break;
             case 2:
-                printf("Proximamente disponible! :)");
+                if(!flagData) {
+                    cargaDatos = controller_loadFromBinary("data.bin",listaEmpleados);
+                    if(cargaDatos == -1) {
+                        printf("Error en la carga de datos.\n");
+                    } else {
+                        printf("Carga de datos exitosa.\n");
+                        flagData = 1;
+                    }
+                } else {
+                    printf("\n\nYa hay datos guardados en el sistema, si vuelve a cargar, se eliminaran los datos previos.\n"
+                           "Si no guardo los datos en un archivo, es posible que se pierda informacion.\n"
+                           "Desea continuar? ");
+                    __fpurge(stdin);
+                    scanf("%c", &c);
+                    if(c == 's') {
+                        ll_clear(listaEmpleados);
+                        cargaDatos = controller_loadFromBinary("data.bin",listaEmpleados);
+                        if(cargaDatos == -1) {
+                            printf("Error en la carga de datos.\n");
+                        } else {
+                            printf("Carga de datos exitosa.\n");
+                            flagData = 1;
+                        }
+                    } else {
+                        printf("\nOperacion cancelada por el usuario.\n");
+                    }
+                }
             	break;
             case 3:
             	if(!flagData || controller_addEmployee(listaEmpleados)) {
@@ -149,7 +174,15 @@ int main()
                 }
             	break;
             case 9:
-                printf("Proximamente disponible! :)");
+                if(!flagData) {
+                    printf("No se inicializo la lista de empleados, cargue los datos del archivo.\n");
+                } else {
+                    if(!controller_saveAsBinary("data.bin", listaEmpleados)) {
+                        printf("Datos guardados con exito a archivo data.bin\n");
+                    } else {
+                        printf("Error al guardar los datos.\n");
+                    }
+                }
             	break;
             case 10:
             	system("clear");

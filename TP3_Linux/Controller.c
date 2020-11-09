@@ -34,7 +34,13 @@ int controller_loadFromText(char* path , LinkedList* pArrayListEmployee)
 int controller_loadFromBinary(char* path , LinkedList* pArrayListEmployee)
 {
     int retorno = -1;
-
+    if(path !=NULL && pArrayListEmployee != NULL) {
+        FILE* f = fopen(path,"rb");
+        if(f != NULL && !parser_EmployeeFromBinary(f,pArrayListEmployee)) {
+            retorno = 0;
+        }
+        fclose(f);
+    }
     return retorno;
 }
 
@@ -280,6 +286,35 @@ int controller_saveAsText(char* path , LinkedList* pArrayListEmployee)
  */
 int controller_saveAsBinary(char* path , LinkedList* pArrayListEmployee)
 {
-    return 1;
+    int retorno = -1;
+    int id;
+    char nombre[128];
+    int horasTrabajadas;
+    int sueldo;
+    int len;
+    Employee* empleado;
+    empleado = NULL;
+    FILE* fb;
+    if(path != NULL && pArrayListEmployee != NULL) {
+        fb = fopen(path,"wb");
+        if(fb != NULL) {
+            len = ll_len(pArrayListEmployee);
+            for(int i = 0; i<len; i++) {
+                empleado = ll_get(pArrayListEmployee, i);
+                if(!employee_getId(empleado, &id)
+                && !employee_getNombre(empleado, nombre)
+                && !employee_getHorasTrabajadas(empleado, &horasTrabajadas)
+                && !employee_getSueldo(empleado, &sueldo)) {
+                   fwrite(&id, sizeof(int), 1, fb);
+                   fwrite(nombre, sizeof(nombre), 1, fb);
+                   fwrite(&horasTrabajadas, sizeof(int), 1, fb);
+                   fwrite(&sueldo, sizeof(int), 1, fb);
+                   retorno = 0;
+                }
+            }
+        }
+        fclose(fb);
+    }
+    return retorno;
 }
 

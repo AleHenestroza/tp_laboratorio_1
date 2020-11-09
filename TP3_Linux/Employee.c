@@ -25,6 +25,19 @@ Employee* employee_newParametros(char* idStr,char* nombreStr,char* horasTrabajad
 	}
 	return emp;
 }
+Employee* employee_newParametrosInt(int id,char* nombreStr,int horasTrabajadas, int sueldo) {
+    Employee* emp = employee_new();
+	if(emp != NULL) {
+		if(employee_setId(emp, id)
+		|| employee_setNombre(emp, nombreStr)
+		|| employee_setHorasTrabajadas(emp, horasTrabajadas)
+		|| employee_setSueldo(emp, sueldo)) {
+            printf("Error en la carga del empleado.\n");
+            employee_delete(emp);
+		}
+	}
+	return emp;
+}
 void employee_delete(Employee* emp) {
 	if(emp != NULL) {
 		emp = NULL;
@@ -60,6 +73,7 @@ int employee_getNombre(Employee* this,char* nombre) {
 	int error = 1;
 	if(this != NULL) {
 		strcpy(nombre, this->nombre);
+		error = 0;
 	}
 	return error;
 }

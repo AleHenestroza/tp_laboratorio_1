@@ -50,8 +50,24 @@ int parser_EmployeeFromText(FILE* pFile , LinkedList* pArrayListEmployee)
  */
 int parser_EmployeeFromBinary(FILE* pFile , LinkedList* pArrayListEmployee)
 {
-	int retorno = 1;
-
-
-	return retorno;
+	int retorno = -1;
+    Employee* nuevoEmpleado;
+    nuevoEmpleado = NULL;
+    int id;
+    char nombre[128];
+    int sueldo;
+    int horasTrabajadas;
+    if(pFile != NULL && pArrayListEmployee != NULL) {
+        do {
+            if(fread(&id, sizeof(int), 1, pFile)
+            && fread(nombre, 128, 1, pFile)
+            && fread(&horasTrabajadas, sizeof(int), 1, pFile)
+            && fread(&sueldo, sizeof(int), 1, pFile)) {
+                nuevoEmpleado = employee_newParametrosInt(id, nombre, horasTrabajadas, sueldo);
+                ll_add(pArrayListEmployee, nuevoEmpleado);
+                retorno = 0;
+            }
+        }while(!feof(pFile));
+    }
+    return retorno;
 }

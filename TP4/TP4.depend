@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1606504819 source:/home/alehenestroza/C_Workspace/TP4/main.c
+1606507111 source:/home/alehenestroza/C_Workspace/TP4/main.c
 	<stdio.h>
 	<stdio_ext.h>
 	<stdlib.h>
@@ -37,7 +37,7 @@
 
 1606503746 /home/alehenestroza/C_Workspace/TP4/parser.h
 
-1606504486 source:/home/alehenestroza/C_Workspace/TP4/persona.c
+1606506112 source:/home/alehenestroza/C_Workspace/TP4/persona.c
 	"persona.h"
 	<stdlib.h>
 	<stdio.h>
@@ -46,11 +46,12 @@
 
 1606499753 /home/alehenestroza/C_Workspace/TP4/persona.h
 
-1606504740 /home/alehenestroza/C_Workspace/TP4/utn.h
+1606507017 /home/alehenestroza/C_Workspace/TP4/utn.h
 	"LinkedList.h"
+	"persona.h"
 	<stdio.h>
 
-1606504787 source:/home/alehenestroza/C_Workspace/TP4/utn.c
+1606506981 source:/home/alehenestroza/C_Workspace/TP4/utn.c
 	"utn.h"
 	"LinkedList.h"
 	"parser.h"

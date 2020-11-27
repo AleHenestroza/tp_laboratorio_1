@@ -222,7 +222,7 @@ void delete_persona(ePersona* persona) {
 * \param persona puntero al elemento a mostrar
 */
 void print_persona(ePersona* persona) {
-    printf("%4d | %12s | %1.2f | %c\n", persona->id, persona->nombre, persona->altura, persona->sexo);
+    printf("%4d | %14s |  %1.2f  | %c\n", persona->id, persona->nombre, persona->altura, persona->sexo);
 }
 /** \brief Recibe una lista de elementos y la itera, imprimiendo por pantalla cada elemento no nulo
 *
@@ -233,6 +233,7 @@ int print_personas(void* lista) {
     int error = 1;
     if(lista != NULL) {
         int tam = ll_len(lista);
+        printf("  ID |     Nombre     | Altura | Sexo\n");
         for(int i = 0; i < tam; i++) {
             ePersona* persona = (ePersona*) ll_get(lista, i);
             if(persona != NULL) {

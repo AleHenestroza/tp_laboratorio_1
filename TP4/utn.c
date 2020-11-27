@@ -147,6 +147,34 @@ int cargaNuevoElemento(LinkedList* lista, int id) {
     }
     return error;
 }
+int modificarElemento(LinkedList* lista) {
+    int error = 1;
+    if(lista != NULL) {
+        printf("*** Modificacion de elemento ***\n\n");
+        int numero;
+        printf("Ingrese el ID de la persona a modificar: ");
+        scanf("%d", &numero);
+
+        if(numero > 0 && numero < 5000) {
+            printf("Persona %d:\n", numero); // El numero corresponde al ID, pero los ID empiezan en 1 y el indice en 0
+            ePersona* persAux = ll_get(lista, numero-1);
+            print_persona(persAux);
+
+            printf("Ingrese un nuevo nombre: ");
+            __fpurge(stdin);
+            scanf("%s", persAux->nombre);
+
+            printf("Ingrese la altura: ");
+            scanf("%f", &persAux->altura);
+
+            printf("Ingrese el sexo: ");
+            __fpurge(stdin);
+            scanf("%c", &persAux->sexo);
+        }
+        error = 0;
+    }
+    return error;
+}
 int guardarBinario(LinkedList* lista) {
     int error = 1;
     if(lista != NULL) {
@@ -164,4 +192,25 @@ int guardarBinario(LinkedList* lista) {
         error = 0;
     }
     return error;
+}
+ePersona* crearPersona(int id) {
+    ePersona* personaAux;
+
+    printf("Ingrese un nombre: ");
+    char nombre[20];
+    __fpurge(stdin);
+    scanf("%s", nombre);
+
+    printf("Ingrese la altura (en metros, por ejemplo, 1.78): ");
+    float altura;
+    scanf("%f", &altura);
+
+    printf("Ingrese el sexo (M o F): ");
+    char sexo;
+    __fpurge(stdin);
+    scanf("%c", &sexo);
+
+    personaAux = new_persona_param(id,nombre,altura,sexo);
+
+    return personaAux;
 }

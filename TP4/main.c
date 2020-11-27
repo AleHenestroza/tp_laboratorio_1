@@ -71,7 +71,81 @@ int main()
     personaAux = crearPersona(nextId);
     ll_push(sublista, ll_len(sublista) / 2, personaAux);
     print_personas(sublista);
+    personaAux = NULL;
 
+    printf("\nPresione una tecla para continuar\n");
+    __fpurge(stdin);
+    getchar();
+    system("clear");
+
+    printf("Remover un elemento de la lista, sin borrarlo de memoria.\n");
+    print_personas(sublista);
+    printf("\nIngrese el ID: ");
+    int id;
+    scanf("%d", &id);
+    personaAux = ll_pop(sublista, get_persona_ID(sublista, id));
+
+    if(personaAux != NULL) {
+        print_personas(sublista);
+        printf("\nElemento extraido:\n\n");
+        print_persona(personaAux);
+    }
+
+    printf("\nPresione una tecla para continuar\n");
+    __fpurge(stdin);
+    getchar();
+    system("clear");
+
+    printf("Revisar si la sublista esta contenida en la lista.\n");
+    if(ll_containsAll(lista2, sublista)) {
+        printf("Todos los elementos de la sublista estan contenidos en la Lista mas grande.\n\n");
+    } else {
+        printf("Hay elementos en la sublista no contenidos en la lista mas grande.\n\n");
+    }
+
+    printf("\nPresione una tecla para continuar\n");
+    __fpurge(stdin);
+    getchar();
+    system("clear");
+
+    printf("Ordenar la sublista\n\n");
+    int opcion;
+    printf("Elija ordenar por:\n1: ID\n2: Nombre\n3: Altura\n4: Sexo\n\n");
+    scanf("%d", &opcion);
+
+    int orden;
+    printf("Elija el orden:\n1: Ascendente  -  0: Descendente\n");
+    scanf("%d", &orden);
+
+    if(orden == 1 || orden == 0) {
+        switch(opcion) {
+            case 1:
+            ll_sort(sublista, sort_id_persona, 1);
+            break;
+
+            case 2:
+            ll_sort(sublista, sort_nombre_persona, 1);
+            break;
+
+            case 3:
+            ll_sort(sublista, sort_altura_persona, 1);
+            break;
+
+            case 4:
+            ll_sort(sublista, sort_sexo_persona, 1);
+            break;
+
+            default:
+            printf("Ingreso una opcion invalida\n");
+            break;
+        }
+
+        print_personas(sublista);
+    }
+
+    printf("\nPresione una tecla para continuar\n");
+    __fpurge(stdin);
+    getchar();
 
     free(lista2);
     return 0;

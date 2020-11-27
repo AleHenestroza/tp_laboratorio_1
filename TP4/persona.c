@@ -1,6 +1,7 @@
 #include "persona.h"
 #include <stdlib.h>
 #include <stdio.h>
+#include <ctype.h>
 #include <string.h>
 #include "LinkedList.h"
 
@@ -305,4 +306,18 @@ int sort_sexo_persona(ePersona* persona1, ePersona* persona2) {
         orden = -1;
     }
     return orden;
+}
+int get_persona_ID(void* lista, int id) {
+    int indice = -1;
+    if(lista != NULL) {
+        int len = ll_len(lista);
+        for(int i = 0; i < len; i++) {
+            ePersona* personaAux = ll_get(lista, i);
+            if(personaAux->id == id) {
+                indice = i;
+                break;
+            }
+        }
+    }
+    return indice;
 }

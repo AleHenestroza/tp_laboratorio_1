@@ -43,3 +43,6 @@ int sort_id_persona(ePersona* persona1, ePersona* persona2);
 int sort_nombre_persona(ePersona* persona1, ePersona* persona2);
 int sort_altura_persona(ePersona* persona1, ePersona* persona2);
 int sort_sexo_persona(ePersona* persona1, ePersona* persona2);
+
+// Buscar elemento por ID
+int get_persona_ID(void* lista, int id);

@@ -1,0 +1,64 @@
+# depslib dependency file v1.0
+1606509121 source:/home/alehenestroza/C_Workspace/TP4/main.c
+	<stdio.h>
+	<stdio_ext.h>
+	<stdlib.h>
+	"persona.h"
+	"LinkedList.h"
+	"utn.h"
+
+1606329955 source:/home/alehenestroza/C_Workspace/TP4/LinkedList.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+
+1606329905 /home/alehenestroza/C_Workspace/TP4/LinkedList.h
+
+1606333639 source:/home/alehenestroza/C_Workspace/TP4/laptop.c
+	"laptop.h"
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	"LinkedList.h"
+
+1606333133 /home/alehenestroza/C_Workspace/TP4/laptop.h
+
+1606500780 source:/home/alehenestroza/C_Workspace/TP4/menus.c
+	"menus.h"
+	<stdlib.h>
+	<stdio.h>
+	<stdio_ext.h>
+	"parser.h"
+
+1606496885 /home/alehenestroza/C_Workspace/TP4/menus.h
+
+1606503743 source:/home/alehenestroza/C_Workspace/TP4/parser.c
+
+1606503746 /home/alehenestroza/C_Workspace/TP4/parser.h
+
+1606508968 source:/home/alehenestroza/C_Workspace/TP4/persona.c
+	"persona.h"
+	<stdlib.h>
+	<stdio.h>
+	<ctype.h>
+	<string.h>
+	"LinkedList.h"
+
+1606508902 /home/alehenestroza/C_Workspace/TP4/persona.h
+
+1606507017 /home/alehenestroza/C_Workspace/TP4/utn.h
+	"LinkedList.h"
+	"persona.h"
+	<stdio.h>
+
+1606506981 source:/home/alehenestroza/C_Workspace/TP4/utn.c
+	"utn.h"
+	"LinkedList.h"
+	"parser.h"
+	<stdio.h>
+	<stdio_ext.h>
+	<stdlib.h>
+	<string.h>
+	"persona.h"
+
